@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concert Ticket Purchase</title>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: rgb(10, 43, 189);
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        section {
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+        }
+
+        form {
+            max-width: 400px;
+            margin: auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        .purchase-button {
+            background-color: #000;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 style="display: block; align-items: center;">AFTER HOURS TILL DAWN</h1>
+    </header>
+
+    <section>
+        <form id="purchaseForm">
+            <label for="ticketType"><b>TICKET</b>:</label>
+            <select id="ticketType" name="ticketType" required>
+                <option value="general">GENERAL ADMISSION STANDING</option>
+                <option value="vip">GOLDEN CIRCLE VIP</option>
+            </select>
+
+            <label for="quantity">Total Items:</label>
+            <input type="number" id="quantity" name="quantity" min="1" value="1" required>
+
+            <label for="customerName">Customer Name:</label>
+            <input type="text" id="customerName" name="customerName" required>
+
+            <label for="price">Price:</label>
+            <input type="text" id="price" name="price" readonly>
+
+            <label for="paymentMethod">Payment Method:</label>
+            <select id="paymentMethod" name="paymentMethod" required>
+                <option value="creditCard">Credit Card</option>
+                <option value="paypal">PayPal</option>
+            </select>
+
+            <button type="button" class="purchase-button" onclick="calculatePrice()">Calculate Price</button>
+            <button type="button" class="purchase-button" onclick="completePurchase()">Complete Purchase</button>
+        </form>
+    </section>
+
+    <script>
+        function calculatePrice() {
+            const ticketType = document.getElementById('ticketType').value;
+            const quantity = document.getElementById('quantity').value;
+
+            let price;
+            if (ticketType === 'general') {
+                price = 259;
+            } else if (ticketType === 'vip') {
+                price = 390;
+            }
+
+            document.getElementById('price').value = `$${price * quantity}`;
+        }
+
+        function completePurchase() {
+            const form = document.getElementById('purchaseForm');
+            const ticketType = form.elements['ticketType'].value;
+            const quantity = form.elements['quantity'].value;
+            const customerName = form.elements['customerName'].value;
+            const price = form.elements['price'].value;
+            const paymentMethod = form.elements['paymentMethod'].value;
+
+            // Simulate processing and thank the user
+            alert(`
+                Thank you, ${customerName}, for purchasing ${quantity} ${ticketType} ticket(s) for ${price}!
+                Your payment will be processed using ${paymentMethod}.
+            `);
+
+            // Reset the form (you may want to redirect to a confirmation page in a real application)
+            form.reset();
+        }
+    </script>
+</body>
+</html>

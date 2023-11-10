@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Weeknd Album Purchase</title>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: rgb(10, 43, 189);
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        section {
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+        }
+
+        form {
+            max-width: 400px;
+            margin: auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        .purchase-button {
+            background-color: #000;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        footer {
+            text-align: center;
+            background-color: rgb(15, 1, 26);
+            color: #fff;
+            padding: 10px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>The Weeknd Album Purchase</h1>
+    </header>
+
+    <section>
+        <form id="purchaseForm">
+            <label for="itemName">Album Title:</label>
+            <input type="text" id="itemName" name="itemName" value=" ">
+
+            <label for="quantity">Number of Items:</label>
+            <input type="number" id="quantity" name="quantity" min="1" value="1">
+
+            <label for="customerName">Customer Name:</label>
+            <input type="text" id="customerName" name="customerName" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="paymentMethod">Payment Method:</label>
+            <select id="paymentMethod" name="paymentMethod" required>
+                <option value="creditCard">Credit Card</option>
+                <option value="paypal">PayPal</option>
+            </select>
+
+            <button type="button" class="purchase-button" onclick="completePurchase()">Complete Purchase</button>
+        </form>
+    </section>
+
+    <script>
+        function completePurchase() {
+            const form = document.getElementById('purchaseForm');
+            const itemName = form.elements['itemName'].value;
+            const quantity = form.elements['quantity'].value;
+            const customerName = form.elements['customerName'].value;
+            const email = form.elements['email'].value;
+            const paymentMethod = form.elements['paymentMethod'].value;
+
+            // Simulate processing and thank the user
+            alert(`
+                Thank you, ${customerName}, for purchasing ${quantity} ${itemName}!
+                An email confirmation will be sent to ${email}.
+                Payment method: ${paymentMethod}
+            `);
+
+            // Reset the form (you may want to redirect to a confirmation page in a real application)
+            form.reset();
+        }
+    </script>
+    <footer>
+
+        <div class="contact-info">
+            <h3>Need Help? Contact Us:</h3>
+            <p>Email: Darari@gmail.com</p>
+            <p>Phone: +62 (123) 456-7890</p>
+        </div>
+        <br>
+        <div class="follow-us">
+            <h3>Follow Us On:</h3>
+            <a href="#" target="_blank">Facebook</a>
+            <a href="#" target="_blank">Twitter</a>
+            <a href="#" target="_blank">Instagram</a>
+        </div>
+
+        <p>&copy; 2023 DARARI. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Weeknd Merch Store</title>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0px;
+            background-color: rgb(255, 255, 255);
+        }
+        .product {
+            border: 2px solid #ccc;
+            border-radius: 20%;
+            padding: 20px;
+            margin: 70px;
+            max-width: 300px;
+            float: inline-end;
+            text-align: center;
+            
+        }
+        .cart {
+            padding: 10px;
+            margin-top: 20px;
+        }
+
+        header {
+            background-color: rgb(10, 43, 189);
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: rgb(10, 43, 189) ;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 15px 20px;
+        }
+
+        footer {
+            text-align: center;
+            background-color: rgb(15, 1, 26);
+            color: #fff;
+            padding: 10px;
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="coba.html"><img src="cobalogo.png">
+    </header>
+    <nav>
+        <a href="coba.html">HOME</a>
+        <a href="cobabelitiket.html">TOUR</a>
+        <a href="cobaalbum.html">ALBUM</a>
+        <a href="cobamerchh.html">STORE</a>
+        
+    </nav>
+
+<div class="product" id="tshirt">
+    <img src="XO LOGO TEE.avif" alt="The Weeknd T-Shirt" width="200">
+    <h2>DFM XO LOGO TEE</h2>
+    <p>$49.99</p>
+    <button onclick="addToCart('The Weeknd T-Shirt')">Add to Cart</button>
+</div>
+
+
+<div class="product" id="sweater">
+    <img src="DAWN FM SWEATER.avif" alt="The Weeknd Sweater" width="200">
+    <h2>DFM CREWNECK SWEATER</h2>
+    <p>$79.99</p>
+    <button onclick="addToCart('The Weeknd Sweater')">Add to Cart</button>
+</div>
+
+
+<div class="product" id="hoodie">
+    <img src="DFM-CHROME-TITLE-HOODIE-BLACK-FRONT_800x.webp" alt="The Weeknd Hoodie" width="200">
+    <h2>DFM PULLOVER HOOD</h2>
+    <p>$88.99</p>
+    <button onclick="addToCart('The Weeknd Hoodie')">Add to Cart</button>
+</div>
+
+
+
+
+
+<div class="cart">
+    <h2>Shopping Cart</h2>
+    <ul id="cartItems"></ul>
+    <p>Total: $<span id="totalAmount">0.00</span></p>
+
+    <h2>Customer Information</h2>
+    <form>
+        <label for="name">Name : </label>
+        <input type="text" id="name" name="name" required><br>
+        <br>
+
+        <label for="address">Address : </label>
+        <input type="text" id="address" name="address" required><br>
+        <br>
+
+        <label for="email">Email : </label>
+        <input type="email" id="email" name="email" required><br>
+
+        <h2>Payment Method</h2>
+        <label for="payment">Select Payment Method : </label>
+        <select id="payment" name="payment" required>
+            <option value="creditCard">Credit Card</option>
+            <option value="paypal">PayPal</option>
+        </select>
+
+        <br><br>
+
+        <button type="submit">Complete Purchase</button>
+    </form>
+</div>
+
+<script>
+    let cart = [];
+    let totalAmount = 0;
+
+    function addToCart(item) {
+        let price = getPrice(item);
+        cart.push({ item, price });
+        totalAmount += price;
+        updateCart();
+    }
+
+    function updateCart() {
+        let cartItemsElement = document.getElementById('cartItems');
+        let totalAmountElement = document.getElementById('totalAmount');
+
+        cartItemsElement.innerHTML = '';
+        cart.forEach(item => {
+            let li = document.createElement('li');
+            li.textContent = `${item.item} - $${item.price.toFixed(2)}`;
+            cartItemsElement.appendChild(li);
+        });
+
+        totalAmountElement.textContent = totalAmount.toFixed(2);
+    }
+
+    function getPrice(item) {
+        switch (item) {
+            case 'The Weeknd T-Shirt':
+                return 29.99;
+            case 'The Weeknd Sweater':
+                return 39.99;
+            case 'The Weeknd Hoodie':
+                return 49.99;
+            default:
+                return 0;
+        }
+    }
+</script>
+<footer>
+
+    <div class="contact-info">
+        <h3>Need Help? Contact Us:</h3>
+        <p>Email: Darari@gmail.com</p>
+        <p>Phone: +62 (123) 456-7890</p>
+    </div>
+    <br>
+    <div class="follow-us">
+        <h3>Follow Us On:</h3>
+        <a href="#" target="_blank">Facebook</a>
+        <a href="#" target="_blank">Twitter</a>
+        <a href="#" target="_blank">Instagram</a>
+    </div>
+
+    <p>&copy; 2023 DARARI. All rights reserved.</p>
+</footer>
+</body>
+</html>
